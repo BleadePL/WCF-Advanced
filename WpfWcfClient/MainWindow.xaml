@@ -8,7 +8,86 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            
+            <ColumnDefinition Width="316"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Rectangle Name="MainPannel" Grid.Column="0" Fill="Beige"/>
+
+        <StackPanel Grid.Column="0">
+            <Label Content="Title" BorderBrush="Black" BorderThickness="1"/>
+            <TextBox x:Name="txbTitle" Height="30"/>
+
+            <Label Content="Author" BorderBrush="Black" BorderThickness="1"/>
+            <TextBox x:Name="txbAuthor" Height="30"/>
+
+            <Label Content="Description" BorderBrush="Black" BorderThickness="1"/>
+            <TextBox x:Name="txbDescription" Height="55"/>
+
+            <Label Content="Rating" BorderBrush="Black" BorderThickness="1"/>
+            <TextBox x:Name="txbRating" Height="30"/>
+
+            <Label Content="ReleaseDate" BorderBrush="Black" BorderThickness="1"/>
+            <DatePicker x:Name="dpDate"/>
+        </StackPanel>
+
+        <Button x:Name="btnAddModify" Click="btnAddModify_Click" d:Content="Add" Width="70" Height="30" Margin="10,313,236,91" />
+
+        <ListView x:Name="lvItems" Grid.Column="1" Grid.Row="0">
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Button Click="Item_Click" Tag="{Binding .}">
+
+                        <Border BorderBrush="Black" BorderThickness="1" Padding="2">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="200"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Label Grid.Column ="0" Content="{Binding Path=Title}"/>
+                                <Label Grid.Column ="0" Content="{Binding Path=Score}"/>
+                                <Label Grid.Column ="0" Content="{Binding Path=Author}"/>
+                                <Label Grid.Column ="0" Content="{Binding Path=ReleaseDate}"/>
+
+                            </Grid>
+                        </Border>
+                    </Button>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Border Grid.Column="0" Margin="0,348,0,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
+                </Grid.RowDefinitions>
+
+
+                <StackPanel Grid.Row="0" Margin="2" Orientation="Horizontal">
+                    <Label Content="Manga ID" Height="28" Width="63"/>
+                    <TextBox x:Name="txbId"  Width="46" Height="24" />
+                    <Button Margin="3" x:Name="btnDelete" Click="btnDelete_Click" Content="Delete" Width="61" Height="20"/>
+                    <Button Margin="3"  x:Name="btnCheckContains" Click="btnCheckContains_Click" d:Content="Check" Width="61" Height="20" />
+                    <Button Margin="3" x:Name="btnGetAll" Click="btnGetAll_Click" Content="GetAll" Width="61" Height="20"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Margin="2" Orientation="Horizontal">
+                    <Label Content="Author" HorizontalAlignment="Center" Height="28" Width="63"/>
+                    <TextBox x:Name="txbSearchAuthor" Width="175" Height="24"/>
+                    <Button Margin="8" x:Name="btnSearch" Click="btnSearch_Click" Content="Search" Width="61" Height="20"></Button>
+                </StackPanel>
+
+            </Grid>
+        </Border>
     </Grid>
 </Window>

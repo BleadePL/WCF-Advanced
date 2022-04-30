@@ -24,5 +24,35 @@ namespace WpfWcfClient
         {
             InitializeComponent();
         }
+
+        private void btnAddModify_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnCheckContains_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnGetAll_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnDelete_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
