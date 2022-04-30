@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WpfWcfClient.MangaService {
+namespace WpfWcfClient.MangaReference {
     using System.Runtime.Serialization;
     using System;
     
@@ -29,7 +29,7 @@ namespace WpfWcfClient.MangaService {
         private string DescriptionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
+        private System.Nullable<int> IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private float RatingField;
@@ -77,7 +77,7 @@ namespace WpfWcfClient.MangaService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id {
+        public System.Nullable<int> Id {
             get {
                 return this.IdField;
             }
@@ -139,20 +139,20 @@ namespace WpfWcfClient.MangaService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="MangaService.IManga")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="MangaReference.IManga", CallbackContract=typeof(WpfWcfClient.MangaReference.IMangaCallback), SessionMode=System.ServiceModel.SessionMode.Required)]
     public interface IManga {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IManga/Add", ReplyAction="http://tempuri.org/IManga/AddResponse")]
-        void Add(int id, WpfWcfClient.MangaService.Manga newManga);
+        void Add(WpfWcfClient.MangaReference.Manga newManga);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IManga/Add", ReplyAction="http://tempuri.org/IManga/AddResponse")]
-        System.Threading.Tasks.Task AddAsync(int id, WpfWcfClient.MangaService.Manga newManga);
+        System.Threading.Tasks.Task AddAsync(WpfWcfClient.MangaReference.Manga newManga);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IManga/Edit", ReplyAction="http://tempuri.org/IManga/EditResponse")]
-        void Edit(int id, WpfWcfClient.MangaService.Manga manga);
+        void Edit(int id, WpfWcfClient.MangaReference.Manga manga);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IManga/Edit", ReplyAction="http://tempuri.org/IManga/EditResponse")]
-        System.Threading.Tasks.Task EditAsync(int id, WpfWcfClient.MangaService.Manga manga);
+        System.Threading.Tasks.Task EditAsync(int id, WpfWcfClient.MangaReference.Manga manga);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IManga/Delete", ReplyAction="http://tempuri.org/IManga/DeleteResponse")]
         void Delete(int id);
@@ -161,58 +161,72 @@ namespace WpfWcfClient.MangaService {
         System.Threading.Tasks.Task DeleteAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IManga/GetAll", ReplyAction="http://tempuri.org/IManga/GetAllResponse")]
-        WpfWcfClient.MangaService.Manga[] GetAll();
+        WpfWcfClient.MangaReference.Manga[] GetAll();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IManga/GetAll", ReplyAction="http://tempuri.org/IManga/GetAllResponse")]
-        System.Threading.Tasks.Task<WpfWcfClient.MangaService.Manga[]> GetAllAsync();
+        System.Threading.Tasks.Task<WpfWcfClient.MangaReference.Manga[]> GetAllAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IManga/GetAllByAuthor", ReplyAction="http://tempuri.org/IManga/GetAllByAuthorResponse")]
-        WpfWcfClient.MangaService.Manga[] GetAllByAuthor(string author);
+        WpfWcfClient.MangaReference.Manga[] GetAllByAuthor(string author);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IManga/GetAllByAuthor", ReplyAction="http://tempuri.org/IManga/GetAllByAuthorResponse")]
-        System.Threading.Tasks.Task<WpfWcfClient.MangaService.Manga[]> GetAllByAuthorAsync(string author);
+        System.Threading.Tasks.Task<WpfWcfClient.MangaReference.Manga[]> GetAllByAuthorAsync(string author);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IManga/Contains")]
+        void Contains(WpfWcfClient.MangaReference.Manga manga);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IManga/Contains")]
+        System.Threading.Tasks.Task ContainsAsync(WpfWcfClient.MangaReference.Manga manga);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IMangaChannel : WpfWcfClient.MangaService.IManga, System.ServiceModel.IClientChannel {
+    public interface IMangaCallback {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IManga/ContainsResult")]
+        void ContainsResult(bool result);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IMangaChannel : WpfWcfClient.MangaReference.IManga, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class MangaClient : System.ServiceModel.ClientBase<WpfWcfClient.MangaService.IManga>, WpfWcfClient.MangaService.IManga {
+    public partial class MangaClient : System.ServiceModel.DuplexClientBase<WpfWcfClient.MangaReference.IManga>, WpfWcfClient.MangaReference.IManga {
         
-        public MangaClient() {
+        public MangaClient(System.ServiceModel.InstanceContext callbackInstance) : 
+                base(callbackInstance) {
         }
         
-        public MangaClient(string endpointConfigurationName) : 
-                base(endpointConfigurationName) {
+        public MangaClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+                base(callbackInstance, endpointConfigurationName) {
         }
         
-        public MangaClient(string endpointConfigurationName, string remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
+        public MangaClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public MangaClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
+        public MangaClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public MangaClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(binding, remoteAddress) {
+        public MangaClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, binding, remoteAddress) {
         }
         
-        public void Add(int id, WpfWcfClient.MangaService.Manga newManga) {
-            base.Channel.Add(id, newManga);
+        public void Add(WpfWcfClient.MangaReference.Manga newManga) {
+            base.Channel.Add(newManga);
         }
         
-        public System.Threading.Tasks.Task AddAsync(int id, WpfWcfClient.MangaService.Manga newManga) {
-            return base.Channel.AddAsync(id, newManga);
+        public System.Threading.Tasks.Task AddAsync(WpfWcfClient.MangaReference.Manga newManga) {
+            return base.Channel.AddAsync(newManga);
         }
         
-        public void Edit(int id, WpfWcfClient.MangaService.Manga manga) {
+        public void Edit(int id, WpfWcfClient.MangaReference.Manga manga) {
             base.Channel.Edit(id, manga);
         }
         
-        public System.Threading.Tasks.Task EditAsync(int id, WpfWcfClient.MangaService.Manga manga) {
+        public System.Threading.Tasks.Task EditAsync(int id, WpfWcfClient.MangaReference.Manga manga) {
             return base.Channel.EditAsync(id, manga);
         }
         
@@ -224,20 +238,28 @@ namespace WpfWcfClient.MangaService {
             return base.Channel.DeleteAsync(id);
         }
         
-        public WpfWcfClient.MangaService.Manga[] GetAll() {
+        public WpfWcfClient.MangaReference.Manga[] GetAll() {
             return base.Channel.GetAll();
         }
         
-        public System.Threading.Tasks.Task<WpfWcfClient.MangaService.Manga[]> GetAllAsync() {
+        public System.Threading.Tasks.Task<WpfWcfClient.MangaReference.Manga[]> GetAllAsync() {
             return base.Channel.GetAllAsync();
         }
         
-        public WpfWcfClient.MangaService.Manga[] GetAllByAuthor(string author) {
+        public WpfWcfClient.MangaReference.Manga[] GetAllByAuthor(string author) {
             return base.Channel.GetAllByAuthor(author);
         }
         
-        public System.Threading.Tasks.Task<WpfWcfClient.MangaService.Manga[]> GetAllByAuthorAsync(string author) {
+        public System.Threading.Tasks.Task<WpfWcfClient.MangaReference.Manga[]> GetAllByAuthorAsync(string author) {
             return base.Channel.GetAllByAuthorAsync(author);
+        }
+        
+        public void Contains(WpfWcfClient.MangaReference.Manga manga) {
+            base.Channel.Contains(manga);
+        }
+        
+        public System.Threading.Tasks.Task ContainsAsync(WpfWcfClient.MangaReference.Manga manga) {
+            return base.Channel.ContainsAsync(manga);
         }
     }
 }

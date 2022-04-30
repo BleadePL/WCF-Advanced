@@ -22,7 +22,7 @@ namespace Host
             try
             {
                 // Step 3: Add a service endpoint.
-                selfHost.AddServiceEndpoint(typeof(IManga), new WSHttpBinding(), "MangaService");
+                selfHost.AddServiceEndpoint(typeof(IManga), new WSDualHttpBinding(), "MangaService");
 
                 // Step 4: Enable metadata exchange.
                 ServiceMetadataBehavior smb = new ServiceMetadataBehavior();

@@ -42,8 +42,7 @@
 
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Button Click="Item_Click" Tag="{Binding .}">
-
+                    <Button Click="Button_Click"  Tag="{Binding .}">
                         <Border BorderBrush="Black" BorderThickness="1" Padding="2">
                             <Grid>
                                 <Grid.ColumnDefinitions>

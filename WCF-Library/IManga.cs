@@ -8,11 +8,11 @@ using System.Text;
 namespace WCF_Library
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService1" in both code and config file together.
-    [ServiceContract]
+    [ServiceContract(SessionMode = SessionMode.Required, CallbackContract = typeof(IMangaCallback))]
     public interface IManga
     {
         [OperationContract]
-        void Add(int id, Manga newManga);
+        void Add(Manga newManga);
 
         [OperationContract]
         void Edit(int id, Manga manga);
@@ -25,17 +25,24 @@ namespace WCF_Library
 
         [OperationContract]
         Manga[] GetAllByAuthor(string author);
+
+        [OperationContract(IsOneWay = true)]
+        void Contains(Manga manga);
     }
 
-
+    public interface IMangaCallback
+    {
+        [OperationContract(IsOneWay = true)]
+        void ContainsResult(bool result);
+    }
 
 
     [DataContract]
     public class Manga
     {
 
-        [DataMember]
-        public int Id { get; set; }
+        [DataMember(IsRequired = false)]
+        public int? Id { get; set; }
         [DataMember]
         public string Title { get; set; }
         [DataMember]
@@ -46,6 +53,8 @@ namespace WCF_Library
         public string Author { get; set; }
         [DataMember]
         public DateTime ReleaseDate { get; set; }
+
+        public string description = "Manga";
 
         public override bool Equals(object obj)
         {
