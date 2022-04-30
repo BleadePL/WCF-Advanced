@@ -36,7 +36,7 @@
             <DatePicker x:Name="dpDate"/>
         </StackPanel>
 
-        <Button x:Name="btnAddModify" Click="btnAddModify_Click" d:Content="Add" Width="70" Height="30" Margin="10,313,236,91" />
+        <Button x:Name="btnAddModify" Click="btnAddModify_Click" Content="Add" Width="70" Height="30" Margin="10,313,236,91" />
 
         <ListView x:Name="lvItems" Grid.Column="1" Grid.Row="0">
 
@@ -53,9 +53,9 @@
                                 </Grid.ColumnDefinitions>
 
                                 <Label Grid.Column ="0" Content="{Binding Path=Title}"/>
-                                <Label Grid.Column ="0" Content="{Binding Path=Score}"/>
-                                <Label Grid.Column ="0" Content="{Binding Path=Author}"/>
-                                <Label Grid.Column ="0" Content="{Binding Path=ReleaseDate}"/>
+                                <Label Grid.Column ="1" Content="{Binding Path=Rating}"/>
+                                <Label Grid.Column ="2" Content="{Binding Path=Author}"/>
+                                <Label Grid.Column ="3" Content="{Binding Path=ReleaseDate}"/>
 
                             </Grid>
                         </Border>
@@ -76,7 +76,7 @@
                     <Label Content="Manga ID" Height="28" Width="63"/>
                     <TextBox x:Name="txbId"  Width="46" Height="24" />
                     <Button Margin="3" x:Name="btnDelete" Click="btnDelete_Click" Content="Delete" Width="61" Height="20"/>
-                    <Button Margin="3"  x:Name="btnCheckContains" Click="btnCheckContains_Click" d:Content="Check" Width="61" Height="20" />
+                    <Button Margin="3"  x:Name="btnCheckContains" Click="btnCheckContains_Click" Content="Check" Width="61" Height="20" />
                     <Button Margin="3" x:Name="btnGetAll" Click="btnGetAll_Click" Content="GetAll" Width="61" Height="20"/>
                 </StackPanel>
 

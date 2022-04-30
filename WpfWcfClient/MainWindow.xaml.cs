@@ -93,7 +93,7 @@ namespace WpfWcfClient
 
         private void btnAddModify_Click(object sender, RoutedEventArgs e)
         {
-            if (!IsEditModeOn)
+            if (IsEditModeOn)
             {
                 mangaClient.Edit(SelectedManga.Id.Value, createManga());
             }
@@ -116,6 +116,7 @@ namespace WpfWcfClient
         }
         private void btnCheckContains_Click(object sender, RoutedEventArgs e)
         {
+            var tmp = createManga();
             mangaClient.Contains(createManga());
         }
 
@@ -133,7 +134,7 @@ namespace WpfWcfClient
    
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
-           Mangas = mangaClient.GetAllByAuthor(txbAuthor.Text);
+           Mangas = mangaClient.GetAllByAuthor(txbSearchAuthor.Text);
            lvItems.ItemsSource = Mangas;
         }
 
