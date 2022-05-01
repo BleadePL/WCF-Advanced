@@ -62,7 +62,7 @@ namespace WCF_Library
             {
                 var other = obj as Manga;
 
-                if (other.Id == Id && other.Title == Title && other.Author == Author)
+                if (String.Equals(other.Title,Title) && String.Equals(other.Author, Author))
                 {
                     return true;
                 }

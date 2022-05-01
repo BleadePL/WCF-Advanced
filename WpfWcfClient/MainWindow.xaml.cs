@@ -71,7 +71,7 @@ namespace WpfWcfClient
             set 
             { 
                 _containsString = value; 
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(_containsString)));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ContainsString)));
             }
         }
 
@@ -81,7 +81,7 @@ namespace WpfWcfClient
 
         public MainWindow()
         {
-            ContainsString = "?";
+            _containsString = "no Match";
             InitializeComponent();
             DataContext = this;
             IsEditModeOn = false;
@@ -116,7 +116,6 @@ namespace WpfWcfClient
         }
         private void btnCheckContains_Click(object sender, RoutedEventArgs e)
         {
-            var tmp = createManga();
             mangaClient.Contains(createManga());
         }
 
@@ -149,10 +148,13 @@ namespace WpfWcfClient
                 dpDate.SelectedDate = SelectedManga.ReleaseDate;
                 txbRating.Text = SelectedManga.Rating.ToString();
                 txbTitle.Text = SelectedManga.Title;
+
+                btnAddModify.Content = "Edit";
             }
             else
             {
                 IsEditModeOn = false;
+                btnAddModify.Content = "Add";
             }
         }
     }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfWcfClient"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="455" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="316"/>
@@ -37,6 +37,7 @@
         </StackPanel>
 
         <Button x:Name="btnAddModify" Click="btnAddModify_Click" Content="Add" Width="70" Height="30" Margin="10,313,236,91" />
+        <Label Content="{Binding ContainsString}" Margin="226,313,20,91"/>
 
         <ListView x:Name="lvItems" Grid.Column="1" Grid.Row="0">
 

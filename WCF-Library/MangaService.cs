@@ -52,7 +52,7 @@ namespace WCF_Library
 
         public void Contains(Manga manga)
         {
-            Thread.Sleep(1000);
+            Thread.Sleep(10000);
             Callback.ContainsResult(Mangas.ContainsValue(manga));
         }
     }
